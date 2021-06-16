@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
@@ -24,7 +22,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>Archive: 2021 - Hexo</title>
+  <title>Hexo</title>
   
 
   
@@ -104,7 +102,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <body>
     
 
-<header id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -355,7 +353,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="l_cover">
   
     
-        <div id="half" class='cover-wrapper  dock' style="display: ;">
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture"></div>
           
@@ -431,242 +429,210 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 
 <div class='l_main'>
-	
-		
-  <section class="post-list">
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+  <div class="article-meta" id="top">
     
+    
+    
+  </div>
+
+
+  
+  
+  <p>[TOC]</p>
+<h1 id="实验一-MIPS指令系统和MIPS体系结构"><a href="#实验一-MIPS指令系统和MIPS体系结构" class="headerlink" title="实验一 MIPS指令系统和MIPS体系结构"></a>实验一 MIPS指令系统和MIPS体系结构</h1><h2 id="1-实验目的"><a href="#1-实验目的" class="headerlink" title="1 实验目的"></a>1 实验目的</h2><p> 了解熟悉MIPSsim模拟器；<br> 熟悉MIPS指令系统及其特点；<br> 熟悉MIPS体系结构。</p>
+<h2 id="2-实验平台"><a href="#2-实验平台" class="headerlink" title="2 实验平台"></a>2 实验平台</h2><p>指令级和流水线操作级模拟器MIPSsim</p>
+<h2 id="3-实验相关知识"><a href="#3-实验相关知识" class="headerlink" title="3 实验相关知识"></a>3 实验相关知识</h2><p>MIPS指令系统；</p>
+<p>MIPSsim使用说明</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id="实验二-流水线及流水线的冲突"><a href="#实验二-流水线及流水线的冲突" class="headerlink" title="实验二 流水线及流水线的冲突"></a>实验二 流水线及流水线的冲突</h1><h1 id="实验三-指令调度和延迟分支"><a href="#实验三-指令调度和延迟分支" class="headerlink" title="实验三 指令调度和延迟分支"></a>实验三 指令调度和延迟分支</h1><h1 id="实验四-Cache性能分析"><a href="#实验四-Cache性能分析" class="headerlink" title="实验四 Cache性能分析"></a>实验四 Cache性能分析</h1><h1 id="实验五-Tomasulo算法"><a href="#实验五-Tomasulo算法" class="headerlink" title="实验五 Tomasulo算法"></a>实验五 Tomasulo算法</h1><h2 id="1-实验目的-1"><a href="#1-实验目的-1" class="headerlink" title="1 实验目的"></a>1 实验目的</h2><h2 id="2-实验平台-1"><a href="#2-实验平台-1" class="headerlink" title="2 实验平台"></a>2 实验平台</h2><p>Tomasulo算法模拟器</p>
+<h2 id="3-实验内容和步骤"><a href="#3-实验内容和步骤" class="headerlink" title="3 实验内容和步骤"></a>3 实验内容和步骤</h2><h1 id="实验六-再定序缓冲（ROB）工作原理"><a href="#实验六-再定序缓冲（ROB）工作原理" class="headerlink" title="实验六 再定序缓冲（ROB）工作原理"></a>实验六 再定序缓冲（ROB）工作原理</h1><h2 id="1-实验目的-2"><a href="#1-实验目的-2" class="headerlink" title="1 实验目的"></a>1 实验目的</h2><p>加深对指令级并行性及其开发的理解；</p>
+<p>加深对基于硬件的前瞻执行的理解；</p>
+<p>掌握ROB在流出、执行、写结果、确认4个阶段所进行的操作；</p>
+<p>给定被执行代码片段，对于具体某个时钟周期，能写出保留站、ROB以及浮点寄存器状态内容的变化。</p>
+<h2 id="2-实验平台-2"><a href="#2-实验平台-2" class="headerlink" title="2 实验平台"></a>2 实验平台</h2><p>​    再定序缓冲ROB模拟器</p>
+<h2 id="3-实验内容和步骤-1"><a href="#3-实验内容和步骤-1" class="headerlink" title="3 实验内容和步骤"></a>3 实验内容和步骤</h2><p>​        首先要掌握 ROB 模拟器的使用方法。 </p>
+<p>（1）假设浮点功能部件的延迟时间为加法 2 个时钟周期，乘法 10 个时钟周期， 除法 40 个时钟周期，Load 部件 2 个时钟周期。</p>
+<p>①对于下面的代码段，给出当指令 MUL.D 即将确认时保留站、ROB 以及浮点寄 存器状态表的内容。 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">L.D F6，24（R2）</span><br><span class="line"></span><br><span class="line">L.D F2，12（R3）</span><br><span class="line"></span><br><span class="line">MUL.D F0，F2，F4 </span><br><span class="line"></span><br><span class="line">SUB.D F8，F6，F2</span><br><span class="line"></span><br><span class="line">DIV..D F10，F0，F6 </span><br><span class="line"></span><br><span class="line">ADD.D F6，F8，F2</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+  
+  
+    
+    <div class='footer'>
+      
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://example.com/2021/06/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C/>http://example.com/2021/06/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C/</a></p>
+              
+            
+          </blockquote>
+        </div>
+      
+      
+    </div>
+  
+  
+    
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-05-27T00:28:48+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：May 27, 2021</p>
+  </a>
+</div>
+
+        
       
         
           
-        
-          
-        
-          
-        
-          
+
         
       
-    
-    
-      
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/06/16/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E9%AA%8C/">
-        Jun 16, 2021
-      </a>
-    </h2>
-  
-  <div class='md'>
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
     
       
-        实验一 进程管理实验目的（1）加深对于进程并发执行概念的理解。
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2021/06/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C/&title= - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2021/06/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C/&title= - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2021/06/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C/&title= - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/2021/06/16/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E9%AA%8C/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i></p>
+          <p class='content'>实验一 进程管理实验目的（1）加深对于进程并发执行概念的理解。
 （2）实践并发进程的创建和控制方法。
 （3）观察和体验进程的动态特性。
-（4）进一步理解进程生命期期间创建、变换、撤销状态变换的过程。
-（5）掌握进程控制的方法，了解父子进程间的控制和协作关系。
-（6）练习Linux系统中进程创建与控制有关的系统调用的编程和调试技术。
-实验环境Cygwin64
-Visual Studio 201...
+（4）进一步理解进程生命期期间创建、变换、撤销状态变换的过...</p>
+        </a>
       
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-06-16</time>
-        
-      </div>
       
-        <div>
-          <a class='readmore' href='/2021/06/16/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E9%AA%8C/'>
-            Read More
-          </a>
-        </div>
+        <a class='next' href='/2021/05/17/temp/'>
+          <p class='title'><i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>量子计算机量子计算机的介绍概念起源需求来源预备知识量子计算机的特点经典计算机的运算过程量子计算机的存储量子计算机的逻辑门量子计算过程并行计算量子测量量子纠缠与相干性</p>
+        </a>
       
     </div>
   
+</article>
 
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/06/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C/">
-        Jun 16, 2021
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        [TOC]
-实验一 MIPS指令系统和MIPS体系结构1 实验目的 了解熟悉MIPSsim模拟器； 熟悉MIPS指令系统及其特点； 熟悉MIPS体系结构。
-2 实验平台指令级和流水线操作级模拟器MIPSsim
-3 实验相关知识MIPS指令系统；
-MIPSsim使用说明
+  </article>
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-实验二 流水线及流水线的冲突实验三 指令调度和延迟分支实验四 Cache性...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-06-16</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/06/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/05/17/temp/">
-        May 17, 2021
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        量子计算机量子计算机的介绍概念起源需求来源预备知识量子计算机的特点经典计算机的运算过程量子计算机的存储量子计算机的逻辑门量子计算过程并行计算量子测量量子纠缠与相干性
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-05-17</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/05/17/temp/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/05/16/hello-world/">
-        Hello World
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Qu...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-05-16</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/05/16/hello-world/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-  
-
-
-	
 </div>
 <aside class='l_side'>
   
@@ -674,109 +640,28 @@ Qu...
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">Hexo</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/volantis-x/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
 
-  
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
     
+  <header>
     
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
 
-  
 
-  
-    
-    
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AE%9E%E9%AA%8C%E7%9B%AE%E7%9A%84"><span class="toc-text">1 实验目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%AE%9E%E9%AA%8C%E5%B9%B3%E5%8F%B0"><span class="toc-text">2 实验平台</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%AE%9E%E9%AA%8C%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86"><span class="toc-text">3 实验相关知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AE%9E%E9%AA%8C%E7%9B%AE%E7%9A%84-1"><span class="toc-text">1 实验目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%AE%9E%E9%AA%8C%E5%B9%B3%E5%8F%B0-1"><span class="toc-text">2 实验平台</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%AE%9E%E9%AA%8C%E5%86%85%E5%AE%B9%E5%92%8C%E6%AD%A5%E9%AA%A4"><span class="toc-text">3 实验内容和步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AE%9E%E9%AA%8C%E7%9B%AE%E7%9A%84-2"><span class="toc-text">1 实验目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%AE%9E%E9%AA%8C%E5%B9%B3%E5%8F%B0-2"><span class="toc-text">2 实验平台</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%AE%9E%E9%AA%8C%E5%86%85%E5%AE%B9%E5%92%8C%E6%AD%A5%E9%AA%A4-1"><span class="toc-text">3 实验内容和步骤</span></a></li></ol>
+    </div>
+  </section>
 
-  
-
-  
-    
-    
-
-<section class="widget qrcode shadow desktop mobile">
-  
-
-  <div class='content article-entry'>
-    
-      <img src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png'
-      
-        height='64px'
-      />
-    
-      <img src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png'
-      
-        height='64px'
-      />
-    
-  </div>
-</section>
 
   
 
 
 </aside>
+
 
 
 		  
@@ -792,14 +677,14 @@ Qu...
   // header 这里无论是否开启pjax都需要
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.remove("show");
+  l_header.classList.add("show");
   
   
     // cover
     var cover_wrapper=document.querySelector('.cover-wrapper');
     
-    cover_wrapper.id="half";
-    cover_wrapper.style.display="";
+    cover_wrapper.id="none";
+    cover_wrapper.style.display="none";
     
   
 </script>
