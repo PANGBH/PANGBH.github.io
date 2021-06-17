@@ -22,7 +22,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>XiaCan&#39;s Blog</title>
+  <title>进程管理 - XiaCan&#39;s Blog</title>
   
 
   
@@ -454,12 +454,61 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
     
+      <h1 class="title">
+        进程管理
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="">
+    <p>请设置文章作者</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2021年6月17日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="进程管理" data-path="/2021/06/17/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
+        
+      </div>
+    
   </div>
 
 
   
   
-  <h1 id="实验一-进程管理"><a href="#实验一-进程管理" class="headerlink" title="实验一 进程管理"></a>实验一 进程管理</h1><h2 id="实验目的"><a href="#实验目的" class="headerlink" title="实验目的"></a>实验目的</h2><p>（1）加深对于进程并发执行概念的理解。</p>
+  <h2 id="实验目的"><a href="#实验目的" class="headerlink" title="实验目的"></a>实验目的</h2><p>（1）加深对于进程并发执行概念的理解。</p>
 <p>（2）实践并发进程的创建和控制方法。</p>
 <p>（3）观察和体验进程的动态特性。</p>
 <p>（4）进一步理解进程生命期期间创建、变换、撤销状态变换的过程。</p>
@@ -538,7 +587,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
               
             
               
-                <p>本文永久链接是：<a href=https://pangbh.github.io/2021/06/16/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/>https://pangbh.github.io/2021/06/16/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/</a></p>
+                <p>本文永久链接是：<a href=https://pangbh.github.io/2021/06/17/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/>https://pangbh.github.io/2021/06/17/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/</a></p>
               
             
           </blockquote>
@@ -555,7 +604,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-06-17T16:35:11+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-06-17T23:45:28+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2021年6月17日</p>
@@ -577,7 +626,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://pangbh.github.io/2021/06/16/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/&title= - XiaCan's Blog&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://pangbh.github.io/2021/06/17/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/&title=进程管理 - XiaCan's Blog&summary="
           
           >
           
@@ -589,7 +638,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://pangbh.github.io/2021/06/16/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/&title= - XiaCan's Blog&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://pangbh.github.io/2021/06/17/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/&title=进程管理 - XiaCan's Blog&summary="
           
           >
           
@@ -601,7 +650,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://pangbh.github.io/2021/06/16/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/&title= - XiaCan's Blog&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://pangbh.github.io/2021/06/17/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/&title=进程管理 - XiaCan's Blog&summary="
           
           >
           
@@ -631,22 +680,20 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2021/06/17/%E5%A4%84%E7%90%86%E6%9C%BA%E8%B0%83%E5%BA%A6/'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i></p>
-          <p class='content'>实验二 处理机调度实验目的熟悉使用各种单处理器调度的各种算法；
-加深对于处理机调度机制的理解；
-练习模拟算法的编程技巧；
-锻炼分析试验数据的能力。
-实验说明随机给出一个进程调度实例，如：
-进程 ...</p>
+        <a class='prev' href='/2021/06/17/%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>实验三 存储管理</p>
+          <p class='content'>实验目的对内存管理的相关内容做进一步的理解；
+了解内存管理的主要任务；
+了解内存管理任务的主要实现方法；
+通过编程加深理解内存的分配、回收等主要算法的原理。 
+实验环境平台：Visual Stu...</p>
         </a>
       
       
-        <a class='next' href='/2021/06/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C/'>
-          <p class='title'><i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>[TOC]
-实验一 MIPS指令系统和MIPS体系结构1 实验目的 了解熟悉MIPSsim模拟器； 熟悉MIPS指令系统及其特点； 熟悉MIPS体系结构。
-2 实验平台指令级和流水线操作级模拟器...</p>
+        <a class='next' href='/2021/05/21/temp/'>
+          <p class='title'>量子计算机<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>量子计算机的介绍概念起源
+需求来源预备知识量子计算机的特点经典计算机的运算过程量子计算机的存储量子计算机的逻辑门量子计算过程并行计算量子测量量子纠缠与相干性</p>
         </a>
       
     </div>
@@ -707,8 +754,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="进程管理";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   // header 这里无论是否开启pjax都需要
