@@ -22,7 +22,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>实验一 进程管理 - XiaCan&#39;s Blog</title>
+  <title>XiaCan&#39;s Blog</title>
   
 
   
@@ -454,61 +454,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
     
-      <h1 class="title">
-        实验一 进程管理
-      </h1>
-      <div class='new-meta-box'>
-        
-          
-            
-<div class='new-meta-item author'>
-  <a class='author' href="/" rel="nofollow">
-    <img no-lazy src="">
-    <p>请设置文章作者</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2021年6月16日</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  <div class="new-meta-item browse leancloud">
-    <a class='notlink'>
-      
-      <div id="lc-pv" data-title="实验一 进程管理" data-path="/2021/06/16/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/">
-        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
-        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
-        次浏览
-      </div>
-    </a>
-  </div>
-
-
-          
-        
-      </div>
-    
   </div>
 
 
   
   
-  <h2 id="实验目的"><a href="#实验目的" class="headerlink" title="实验目的"></a>实验目的</h2><p>（1）加深对于进程并发执行概念的理解。</p>
+  <h1 id="实验一-进程管理"><a href="#实验一-进程管理" class="headerlink" title="实验一 进程管理"></a>实验一 进程管理</h1><h2 id="实验目的"><a href="#实验目的" class="headerlink" title="实验目的"></a>实验目的</h2><p>（1）加深对于进程并发执行概念的理解。</p>
 <p>（2）实践并发进程的创建和控制方法。</p>
 <p>（3）观察和体验进程的动态特性。</p>
 <p>（4）进一步理解进程生命期期间创建、变换、撤销状态变换的过程。</p>
@@ -535,23 +486,23 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>envp[] 要传递给新执行程序的完整的环境变量参数列表(可以为空). </p>
 <p>Exec执行成功后将用一个新的程序代替原进程，但进程号不变，它绝不会再返回到调用进程了。如果exec调用失败，它会返回-1。</p>
 <h2 id="实验内容"><a href="#实验内容" class="headerlink" title="实验内容"></a>实验内容</h2><p>每个进程都执行自己独立的程序，打印自己的pid，每个父进程打印其子进程的pid;</p>
-<p>​          <img src="image/clip_image001.png" class="lazyload" data-srcset="image/clip_image001.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"> </p>
+<p>​          <img src="image/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/clip_image001.png" class="lazyload" data-srcset="image/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/clip_image001.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"> </p>
 <p> 源程序：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">pid_t</span> pid1 = fork();</span><br><span class="line">   <span class="keyword">if</span> (pid1 != <span class="number">0</span>)</span><br><span class="line">   &#123;</span><br><span class="line">       <span class="built_in">printf</span>(<span class="string">&quot;父进程的pid为：%d，它的子进程（子1）的pid为：%d\n&quot;</span>, getpid(), pid1);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">else</span> </span><br><span class="line">   &#123;</span><br><span class="line">       <span class="keyword">pid_t</span> pid2 = fork();</span><br><span class="line">       <span class="keyword">if</span> (pid2 != <span class="number">0</span>)</span><br><span class="line">       &#123;</span><br><span class="line">           <span class="built_in">printf</span>(<span class="string">&quot;子进程1的pid为 ：%d，它的子进程（子2）的pid为：%d\n&quot;</span>, getpid(), pid2);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">else</span> &#123;</span><br><span class="line">           <span class="built_in">printf</span>(<span class="string">&quot;子进程2的pid为：%d\n&quot;</span>, getpid());</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>编译源程序：</p>
-<p><img src="image/image-20210612200133698.png" class="lazyload" data-srcset="image/image-20210612200133698.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210612200133698"></p>
+<p><img src="image/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/image-20210612200133698.png" class="lazyload" data-srcset="image/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/image-20210612200133698.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210612200133698"></p>
 <p>运行结果：</p>
-<p><img src="image/image-20210612200152724.png" class="lazyload" data-srcset="image/image-20210612200152724.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210612200152724"></p>
+<p><img src="image/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/image-20210612200152724.png" class="lazyload" data-srcset="image/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/image-20210612200152724.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210612200152724"></p>
 <p>每个进程都执行自己独立的程序，打印自己的pid，父进程打印其子进程的pid;</p>
-<p>​          <img src="image/clip_image001-1623498832121.png" class="lazyload" data-srcset="image/clip_image001-1623498832121.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"> </p>
+<p>​          <img src="image/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/clip_image001-1623498832121.png" class="lazyload" data-srcset="image/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/clip_image001-1623498832121.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"> </p>
 <p> 源程序：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">pid_t</span> pid1 = fork();</span><br><span class="line">    <span class="keyword">if</span> (pid1 != <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">pid_t</span> pid2 = fork();</span><br><span class="line">        <span class="keyword">if</span> (pid2 != <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;父进程的pid为：%d，它的子进程（子1）的pid为：%d，子进程（子2）的pid为%d\n&quot;</span>, getpid(), pid1, pid2);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;子进程2的pid为：%d\n&quot;</span>, getpid());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;子进程1的pid为 ：%d\n&quot;</span>, getpid());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
 <p>运行结果：</p>
-<p><img src="image/image-20210612200424169.png" class="lazyload" data-srcset="image/image-20210612200424169.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210612200424169"></p>
+<p><img src="image/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/image-20210612200424169.png" class="lazyload" data-srcset="image/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/image-20210612200424169.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210612200424169"></p>
 <p>编写一个命令处理程序，能处理max(m,n), min(m,n)和 average(m,n,l)这几个命令。（使用exec函数族）</p>
 <p> 源程序：</p>
 <p>tmp3.c</p>
@@ -569,7 +520,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">float</span> m, n, l;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;请输入三个数：\n&quot;</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%f%f%f&quot;</span>, &amp;m, &amp;n, &amp;l);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;这三个数的平均值为：%f\n&quot;</span>, (m + n + l) / <span class="number">3</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>运行结果：</p>
-<p><img src="image/image-20210612201718106.png" class="lazyload" data-srcset="image/image-20210612201718106.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210612201718106"></p>
+<p><img src="image/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/image-20210612201718106.png" class="lazyload" data-srcset="image/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/image-20210612201718106.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210612201718106"></p>
 
   
   
@@ -604,10 +555,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-06-16T17:20:52+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-06-17T16:35:11+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2021年6月16日</p>
+    <p>更新于：2021年6月17日</p>
   </a>
 </div>
 
@@ -626,7 +577,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://pangbh.github.io/2021/06/16/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/&title=实验一 进程管理 - XiaCan's Blog&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://pangbh.github.io/2021/06/16/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/&title= - XiaCan's Blog&summary="
           
           >
           
@@ -638,7 +589,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://pangbh.github.io/2021/06/16/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/&title=实验一 进程管理 - XiaCan's Blog&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://pangbh.github.io/2021/06/16/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/&title= - XiaCan's Blog&summary="
           
           >
           
@@ -650,7 +601,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://pangbh.github.io/2021/06/16/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/&title=实验一 进程管理 - XiaCan's Blog&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://pangbh.github.io/2021/06/16/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/&title= - XiaCan's Blog&summary="
           
           >
           
@@ -680,17 +631,22 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2021/06/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C/'>
+        <a class='prev' href='/2021/06/17/%E5%A4%84%E7%90%86%E6%9C%BA%E8%B0%83%E5%BA%A6/'>
           <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i></p>
-          <p class='content'>[TOC]
-实验一 MIPS指令系统和MIPS体系结构1 实验目的 了解熟悉MIPSsim模拟器； 熟悉MIPS指令系统及其特点； 熟悉MIPS体系结构。
-2 实验平台指令级和流水线操作级模拟器...</p>
+          <p class='content'>实验二 处理机调度实验目的熟悉使用各种单处理器调度的各种算法；
+加深对于处理机调度机制的理解；
+练习模拟算法的编程技巧；
+锻炼分析试验数据的能力。
+实验说明随机给出一个进程调度实例，如：
+进程 ...</p>
         </a>
       
       
-        <a class='next' href='/2021/05/21/temp/'>
-          <p class='title'>量子计算机<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>量子计算机的介绍概念起源需求来源预备知识量子计算机的特点经典计算机的运算过程量子计算机的存储量子计算机的逻辑门量子计算过程并行计算量子测量量子纠缠与相干性</p>
+        <a class='next' href='/2021/06/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C/'>
+          <p class='title'><i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>[TOC]
+实验一 MIPS指令系统和MIPS体系结构1 实验目的 了解熟悉MIPSsim模拟器； 熟悉MIPS指令系统及其特点； 熟悉MIPS体系结构。
+2 实验平台指令级和流水线操作级模拟器...</p>
         </a>
       
     </div>
@@ -751,8 +707,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <script>
   window.pdata={}
-  pdata.ispage=true;
-  pdata.postTitle="实验一 进程管理";
+  pdata.ispage=false;
+  pdata.postTitle="";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   // header 这里无论是否开启pjax都需要
