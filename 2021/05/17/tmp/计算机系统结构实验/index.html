@@ -22,7 +22,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>进程管理 - XiaCan&#39;s Blog</title>
+  <title>计算机系统结构实验 - XiaCan&#39;s Blog</title>
   
 
   
@@ -455,7 +455,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title">
-        进程管理
+        计算机系统结构实验
       </h1>
       <div class='new-meta-box'>
         
@@ -479,7 +479,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2021年6月17日</p>
+    <p>发布于：2021年5月17日</p>
   </a>
 </div>
 
@@ -490,7 +490,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="new-meta-item browse leancloud">
     <a class='notlink'>
       
-      <div id="lc-pv" data-title="进程管理" data-path="/2021/06/17/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/">
+      <div id="lc-pv" data-title="计算机系统结构实验" data-path="/2021/05/17/tmp/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C/">
         <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
         <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
         次浏览
@@ -508,68 +508,50 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   
   
-  <h2 id="实验目的"><a href="#实验目的" class="headerlink" title="实验目的"></a>实验目的</h2><p>（1）加深对于进程并发执行概念的理解。</p>
-<p>（2）实践并发进程的创建和控制方法。</p>
-<p>（3）观察和体验进程的动态特性。</p>
-<p>（4）进一步理解进程生命期期间创建、变换、撤销状态变换的过程。</p>
-<p>（5）掌握进程控制的方法，了解父子进程间的控制和协作关系。</p>
-<p>（6）练习Linux系统中进程创建与控制有关的系统调用的编程和调试技术。</p>
-<h2 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h2><p>Cygwin64</p>
-<p>Visual Studio 2019</p>
-<h2 id="实验说明"><a href="#实验说明" class="headerlink" title="实验说明"></a>实验说明</h2><p>与进程创建、执行有关的系统调用说明 </p>
-<p>进程可以通过系统调用fork()创建子进程并和其子进程并发执行.</p>
-<p>子进程初始的执行映像是父进程的一个复本.</p>
-<p>子进程可以通过exec()系统调用族装入一个新的执行程序。</p>
-<p>父进程可以使用wait()或waitpid()系统调用等待子进程的结束并负责收集和清理子进程的退出状态。 </p>
-<p>fork()系统调用语法: </p>
-<p>#include &lt;unistd.h&gt; </p>
-<p>pid_t fork(void); </p>
-<p>fork成功创建子进程后将返回子进程的进程号,不成功会返回-1. </p>
-<p> getpid()—获取进程的pid</p>
-<p>exec 系统调用</p>
-<p>exec 系统调用有一组6个函数,其中示例实验中引用了 execve 系统调用语法: </p>
-<p>#include &lt;unistd.h&gt; </p>
-<p>int execve(const char *path, const char *argv[], const char * envp[]); </p>
-<p>path 要装入的新的执行文件的绝对路径名字符串. </p>
-<p>argv[] 要传递给新执行程序的完整的命令参数列表(可以为空). </p>
-<p>envp[] 要传递给新执行程序的完整的环境变量参数列表(可以为空). </p>
-<p>Exec执行成功后将用一个新的程序代替原进程，但进程号不变，它绝不会再返回到调用进程了。如果exec调用失败，它会返回-1。</p>
-<h2 id="实验内容"><a href="#实验内容" class="headerlink" title="实验内容"></a>实验内容</h2><p>每个进程都执行自己独立的程序，打印自己的pid，每个父进程打印其子进程的pid;</p>
-<p>​          <img src="image/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/clip_image001.png" class="lazyload" data-srcset="image/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/clip_image001.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"> </p>
-<p> 源程序：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">pid_t</span> pid1 = fork();</span><br><span class="line">   <span class="keyword">if</span> (pid1 != <span class="number">0</span>)</span><br><span class="line">   &#123;</span><br><span class="line">       <span class="built_in">printf</span>(<span class="string">&quot;父进程的pid为：%d，它的子进程（子1）的pid为：%d\n&quot;</span>, getpid(), pid1);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">else</span> </span><br><span class="line">   &#123;</span><br><span class="line">       <span class="keyword">pid_t</span> pid2 = fork();</span><br><span class="line">       <span class="keyword">if</span> (pid2 != <span class="number">0</span>)</span><br><span class="line">       &#123;</span><br><span class="line">           <span class="built_in">printf</span>(<span class="string">&quot;子进程1的pid为 ：%d，它的子进程（子2）的pid为：%d\n&quot;</span>, getpid(), pid2);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">else</span> &#123;</span><br><span class="line">           <span class="built_in">printf</span>(<span class="string">&quot;子进程2的pid为：%d\n&quot;</span>, getpid());</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>编译源程序：</p>
-<p><img src="image/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/image-20210612200133698.png" class="lazyload" data-srcset="image/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/image-20210612200133698.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210612200133698"></p>
-<p>运行结果：</p>
-<p><img src="image/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/image-20210612200152724.png" class="lazyload" data-srcset="image/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/image-20210612200152724.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210612200152724"></p>
-<p>每个进程都执行自己独立的程序，打印自己的pid，父进程打印其子进程的pid;</p>
-<p>​          <img src="image/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/clip_image001-1623498832121.png" class="lazyload" data-srcset="image/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/clip_image001-1623498832121.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"> </p>
-<p> 源程序：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">pid_t</span> pid1 = fork();</span><br><span class="line">    <span class="keyword">if</span> (pid1 != <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">pid_t</span> pid2 = fork();</span><br><span class="line">        <span class="keyword">if</span> (pid2 != <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;父进程的pid为：%d，它的子进程（子1）的pid为：%d，子进程（子2）的pid为%d\n&quot;</span>, getpid(), pid1, pid2);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;子进程2的pid为：%d\n&quot;</span>, getpid());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;子进程1的pid为 ：%d\n&quot;</span>, getpid());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>运行结果：</p>
-<p><img src="image/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/image-20210612200424169.png" class="lazyload" data-srcset="image/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/image-20210612200424169.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210612200424169"></p>
-<p>编写一个命令处理程序，能处理max(m,n), min(m,n)和 average(m,n,l)这几个命令。（使用exec函数族）</p>
-<p> 源程序：</p>
-<p>tmp3.c</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 10</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> cmdname[N];</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;$&quot;</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>, cmdname);</span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">strcmp</span>(cmdname, <span class="string">&quot;min&quot;</span>) == <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> i = execl(<span class="string">&quot;D:/VS2019/OSexperiment/Temp/min&quot;</span>, <span class="string">&quot;min&quot;</span>, <span class="literal">NULL</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">strcmp</span>(cmdname, <span class="string">&quot;max&quot;</span>) == <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		execl(<span class="string">&quot;D:/VS2019/OSexperiment/Temp/max&quot;</span>, <span class="string">&quot;max&quot;</span>, <span class="literal">NULL</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">strcmp</span>(cmdname, <span class="string">&quot;average&quot;</span>) == <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		execl(<span class="string">&quot;D:/VS2019/OSexperiment/Temp/average&quot;</span>, <span class="string">&quot;average&quot;</span>, <span class="literal">NULL</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;ERROR\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  <h1 id="实验一-MIPS指令系统和MIPS体系结构"><a href="#实验一-MIPS指令系统和MIPS体系结构" class="headerlink" title="实验一 MIPS指令系统和MIPS体系结构"></a>实验一 MIPS指令系统和MIPS体系结构</h1><h2 id="1-实验目的"><a href="#1-实验目的" class="headerlink" title="1 实验目的"></a>1 实验目的</h2><p> 了解熟悉MIPSsim模拟器；<br> 熟悉MIPS指令系统及其特点；<br> 熟悉MIPS体系结构。</p>
+<h2 id="2-实验平台"><a href="#2-实验平台" class="headerlink" title="2 实验平台"></a>2 实验平台</h2><p>指令级和流水线操作级模拟器MIPSsim</p>
+<h2 id="3-实验相关知识"><a href="#3-实验相关知识" class="headerlink" title="3 实验相关知识"></a>3 实验相关知识</h2><p>MIPS指令系统；</p>
+<p>MIPSsim使用说明</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id="实验二-流水线及流水线的冲突"><a href="#实验二-流水线及流水线的冲突" class="headerlink" title="实验二 流水线及流水线的冲突"></a>实验二 流水线及流水线的冲突</h1><h1 id="实验三-指令调度和延迟分支"><a href="#实验三-指令调度和延迟分支" class="headerlink" title="实验三 指令调度和延迟分支"></a>实验三 指令调度和延迟分支</h1><h1 id="实验四-Cache性能分析"><a href="#实验四-Cache性能分析" class="headerlink" title="实验四 Cache性能分析"></a>实验四 Cache性能分析</h1><h1 id="实验五-Tomasulo算法"><a href="#实验五-Tomasulo算法" class="headerlink" title="实验五 Tomasulo算法"></a>实验五 Tomasulo算法</h1><h2 id="1-实验目的-1"><a href="#1-实验目的-1" class="headerlink" title="1 实验目的"></a>1 实验目的</h2><h2 id="2-实验平台-1"><a href="#2-实验平台-1" class="headerlink" title="2 实验平台"></a>2 实验平台</h2><p>Tomasulo算法模拟器</p>
+<h2 id="3-实验内容和步骤"><a href="#3-实验内容和步骤" class="headerlink" title="3 实验内容和步骤"></a>3 实验内容和步骤</h2><h1 id="实验六-再定序缓冲（ROB）工作原理"><a href="#实验六-再定序缓冲（ROB）工作原理" class="headerlink" title="实验六 再定序缓冲（ROB）工作原理"></a>实验六 再定序缓冲（ROB）工作原理</h1><h2 id="1-实验目的-2"><a href="#1-实验目的-2" class="headerlink" title="1 实验目的"></a>1 实验目的</h2><p>加深对指令级并行性及其开发的理解；</p>
+<p>加深对基于硬件的前瞻执行的理解；</p>
+<p>掌握ROB在流出、执行、写结果、确认4个阶段所进行的操作；</p>
+<p>给定被执行代码片段，对于具体某个时钟周期，能写出保留站、ROB以及浮点寄存器状态内容的变化。</p>
+<h2 id="2-实验平台-2"><a href="#2-实验平台-2" class="headerlink" title="2 实验平台"></a>2 实验平台</h2><p>​    再定序缓冲ROB模拟器</p>
+<h2 id="3-实验内容和步骤-1"><a href="#3-实验内容和步骤-1" class="headerlink" title="3 实验内容和步骤"></a>3 实验内容和步骤</h2><p>​        首先要掌握 ROB 模拟器的使用方法。 </p>
+<p>（1）假设浮点功能部件的延迟时间为加法 2 个时钟周期，乘法 10 个时钟周期， 除法 40 个时钟周期，Load 部件 2 个时钟周期。</p>
+<p>①对于下面的代码段，给出当指令 MUL.D 即将确认时保留站、ROB 以及浮点寄 存器状态表的内容。 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">L.D F6，24（R2）</span><br><span class="line"></span><br><span class="line">L.D F2，12（R3）</span><br><span class="line"></span><br><span class="line">MUL.D F0，F2，F4 </span><br><span class="line"></span><br><span class="line">SUB.D F8，F6，F2</span><br><span class="line"></span><br><span class="line">DIV..D F10，F0，F6 </span><br><span class="line"></span><br><span class="line">ADD.D F6，F8，F2</span><br></pre></td></tr></table></figure>
 
 
 
-<p>min.c</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">float</span> m, n;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;请输入要比较的两个数：\n&quot;</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%f%f&quot;</span>, &amp;m, &amp;n);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;较小的数是：%f\n&quot;</span>, m &gt; n ? n : m);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>max.c</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">float</span> m, n;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;请输入要比较的两个数：\n&quot;</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%f%f&quot;</span>, &amp;m, &amp;n);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;较大的数是：%f\n&quot;</span>, m &gt; n ? m : n);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>average.c</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">float</span> m, n, l;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;请输入三个数：\n&quot;</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%f%f%f&quot;</span>, &amp;m, &amp;n, &amp;l);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;这三个数的平均值为：%f\n&quot;</span>, (m + n + l) / <span class="number">3</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果：</p>
-<p><img src="image/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/image-20210612201718106.png" class="lazyload" data-srcset="image/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/image-20210612201718106.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20210612201718106"></p>
 
   
   
@@ -587,7 +569,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
               
             
               
-                <p>本文永久链接是：<a href=https://pangbh.github.io/2021/06/17/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/>https://pangbh.github.io/2021/06/17/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/</a></p>
+                <p>本文永久链接是：<a href=https://pangbh.github.io/2021/05/17/tmp/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C/>https://pangbh.github.io/2021/05/17/tmp/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C/</a></p>
               
             
           </blockquote>
@@ -604,7 +586,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-06-17T23:45:28+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-06-17T23:43:56+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2021年6月17日</p>
@@ -626,7 +608,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://pangbh.github.io/2021/06/17/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/&title=进程管理 - XiaCan's Blog&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://pangbh.github.io/2021/05/17/tmp/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C/&title=计算机系统结构实验 - XiaCan's Blog&summary="
           
           >
           
@@ -638,7 +620,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://pangbh.github.io/2021/06/17/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/&title=进程管理 - XiaCan's Blog&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://pangbh.github.io/2021/05/17/tmp/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C/&title=计算机系统结构实验 - XiaCan's Blog&summary="
           
           >
           
@@ -650,7 +632,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://pangbh.github.io/2021/06/17/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/&title=进程管理 - XiaCan's Blog&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://pangbh.github.io/2021/05/17/tmp/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C/&title=计算机系统结构实验 - XiaCan's Blog&summary="
           
           >
           
@@ -680,20 +662,16 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2021/06/17/%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86/'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>实验三 存储管理</p>
-          <p class='content'>实验目的对内存管理的相关内容做进一步的理解；
-了解内存管理的主要任务；
-了解内存管理任务的主要实现方法；
-通过编程加深理解内存的分配、回收等主要算法的原理。 
-实验环境平台：Visual Stu...</p>
+        <a class='prev' href='/2021/05/21/tmp/temp/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>量子计算机</p>
+          <p class='content'>量子计算机的介绍概念起源
+需求来源预备知识量子计算机的特点经典计算机的运算过程量子计算机的存储量子计算机的逻辑门量子计算过程并行计算量子测量量子纠缠与相干性</p>
         </a>
       
       
-        <a class='next' href='/2021/05/21/temp/'>
-          <p class='title'>量子计算机<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>量子计算机的介绍概念起源
-需求来源预备知识量子计算机的特点经典计算机的运算过程量子计算机的存储量子计算机的逻辑门量子计算过程并行计算量子测量量子纠缠与相干性</p>
+        <a class='next' href='/2021/05/16/hello-world/'>
+          <p class='title'>Hello World<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any ...</p>
         </a>
       
     </div>
@@ -736,7 +714,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E7%9B%AE%E7%9A%84"><span class="toc-text">实验目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E7%8E%AF%E5%A2%83"><span class="toc-text">实验环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E8%AF%B4%E6%98%8E"><span class="toc-text">实验说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E5%86%85%E5%AE%B9"><span class="toc-text">实验内容</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AE%9E%E9%AA%8C%E7%9B%AE%E7%9A%84"><span class="toc-text">1 实验目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%AE%9E%E9%AA%8C%E5%B9%B3%E5%8F%B0"><span class="toc-text">2 实验平台</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%AE%9E%E9%AA%8C%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86"><span class="toc-text">3 实验相关知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AE%9E%E9%AA%8C%E7%9B%AE%E7%9A%84-1"><span class="toc-text">1 实验目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%AE%9E%E9%AA%8C%E5%B9%B3%E5%8F%B0-1"><span class="toc-text">2 实验平台</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%AE%9E%E9%AA%8C%E5%86%85%E5%AE%B9%E5%92%8C%E6%AD%A5%E9%AA%A4"><span class="toc-text">3 实验内容和步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AE%9E%E9%AA%8C%E7%9B%AE%E7%9A%84-2"><span class="toc-text">1 实验目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%AE%9E%E9%AA%8C%E5%B9%B3%E5%8F%B0-2"><span class="toc-text">2 实验平台</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%AE%9E%E9%AA%8C%E5%86%85%E5%AE%B9%E5%92%8C%E6%AD%A5%E9%AA%A4-1"><span class="toc-text">3 实验内容和步骤</span></a></li></ol>
     </div>
   </section>
 
@@ -755,7 +733,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <script>
   window.pdata={}
   pdata.ispage=true;
-  pdata.postTitle="进程管理";
+  pdata.postTitle="计算机系统结构实验";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   // header 这里无论是否开启pjax都需要
